@@ -1,0 +1,56 @@
+.index {
+  &-banner {
+  }
+
+  &-contents {
+    width: 100%;
+    margin: 0 auto;
+
+    &-boxlink {
+      @media screen and (min-width: 1000px) {
+        overflow: hidden;
+      }
+
+      > a > div {
+        margin: 15px 15px 0;
+        width: calc(100% - 30px);
+        height: 100px;
+        background-color: #f2f2f2;
+
+        // 在child都是floating的狀況下，parent無法得知有什麼children,因此padding也會失效
+        // 一樣可以透過overflow解決
+        @media screen and (min-width: 1000px) {
+          margin: 20px 10px 0;
+          height: 230px;
+          float: left;
+        }
+
+        > h3 {
+          font-size: 28px;
+          font-weight: 600 !important;
+          text-transform: uppercase;
+          color: #111;
+          text-align: center;
+          line-height: 100px;
+          font-weight: 100;
+
+          @media screen and (min-width: 1000px) {
+            // line height設的跟div一樣高，就可以垂直置中
+            line-height: 230px;
+          }
+        }
+      }
+
+      @media screen and (min-width: 1000px) {
+        &-square {
+          margin: 10px 10px 0;
+          width: calc(25% - 20px) !important;
+        }
+
+        &-rect {
+          width: calc(50% - 20px) !important;
+        }
+      }
+    }
+  }
+}

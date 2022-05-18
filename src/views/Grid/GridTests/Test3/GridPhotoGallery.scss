@@ -1,0 +1,21 @@
+.photo-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+
+  // 每個row都是一樣高度
+  grid-auto-rows: 240px;
+
+  // 在小螢幕span會很奇怪
+  @media screen and (min-width: 600px) {
+    // 高卡片
+    &__card-tall {
+      grid-row: span 2 / auto; // 往下延伸兩格 (start / ending point)
+    }
+
+    // 寬卡片
+    &__card-wide {
+      grid-column: span 2 / auto;
+    }
+  }
+}

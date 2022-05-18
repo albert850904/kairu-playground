@@ -1,0 +1,92 @@
+.animated-grid {
+  height: 85vh;
+  display: grid;
+  gap: 1rem;
+
+  // explicit grid >> manually define cols / rows
+  grid-template-areas:
+    "a b c d"
+    "l 😇 😇 e"
+    "k 😇 😇 f"
+    "j i h g";
+
+  // container 有 fix height
+  // grid-template-rows: repeat(4, 25%);
+  grid-template-columns: 240px auto auto 240px;
+
+  // 不用手動更改每個component的delay
+  $stagger-delay: 100ms;
+
+  > .card {
+    background-color: cornflowerblue;
+    animation: cardEntrance 700ms ease-out;
+    animation-fill-mode: backwards; // 會依照keyframe 的from去設定style, 不然會先看到卡片才跑動畫
+
+    &:nth-child(1) {
+      grid-area: a;
+      animation-delay: calc(1 * $stagger-delay);
+    }
+    &:nth-child(2) {
+      grid-area: b;
+      animation-delay: calc(2 * $stagger-delay);
+    }
+    &:nth-child(3) {
+      grid-area: c;
+      animation-delay: calc(3 * $stagger-delay);
+    }
+    &:nth-child(4) {
+      grid-area: d;
+      animation-delay: calc(4 * $stagger-delay);
+    }
+    &:nth-child(5) {
+      grid-area: e;
+      animation-delay: calc(5 * $stagger-delay);
+    }
+    &:nth-child(6) {
+      grid-area: f;
+      animation-delay: calc(6 * $stagger-delay);
+    }
+    &:nth-child(7) {
+      grid-area: g;
+      animation-delay: calc(7 * $stagger-delay);
+    }
+    &:nth-child(8) {
+      grid-area: h;
+      animation-delay: calc(8 * $stagger-delay);
+    }
+    &:nth-child(9) {
+      grid-area: i;
+      animation-delay: calc(9 * $stagger-delay);
+    }
+    &:nth-child(10) {
+      grid-area: j;
+      animation-delay: calc(10 * $stagger-delay);
+    }
+    &:nth-child(11) {
+      grid-area: k;
+      animation-delay: calc(11 * $stagger-delay);
+    }
+    &:nth-child(12) {
+      grid-area: l;
+      animation-delay: calc(12 * $stagger-delay);
+    }
+    &:last-child {
+      grid-area: 😇;
+      animation-delay: calc(13 * $stagger-delay);
+    }
+  }
+}
+
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+    transform: scale(0.3);
+    filter: hue-rotate(180deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: hue-rotate(0deg);
+  }
+}

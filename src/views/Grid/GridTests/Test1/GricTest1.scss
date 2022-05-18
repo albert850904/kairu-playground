@@ -1,0 +1,88 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-areas: "title title" "header header" "sidebar sidebar" "content content" "footer footer";
+  row-gap: 10px;
+  column-gap: 10px;
+
+  > .gtitle {
+    grid-area: title;
+  }
+
+  > .gheader {
+    grid-area: header;
+  }
+
+  > .gsidebar {
+    grid-area: sidebar;
+  }
+
+  > .gcontent {
+    grid-area: content;
+  }
+
+  > .gfooter {
+    grid-area: footer;
+  }
+
+  > div:nth-child(even) {
+    background-color: cornflowerblue;
+  }
+
+  > div:nth-child(odd) {
+    background-color: blanchedalmond;
+  }
+}
+
+// desktop size
+@media screen and (min-width: 736px) {
+  .grid {
+    display: grid;
+    // 這個grid裡面有幾個columns
+    // 1fr 1fr 就是把一個window size 分成兩個equal的fraction
+    // 200px 1fr 就是第一個column只有200px, 第二個吃剩下全部
+    grid-template-columns: 1fr 500px 500px 1fr; // one fraction(一個window size),
+
+    // 畫出四條rows，切成五個區塊
+    grid-template-rows: 1fr 1fr 1fr 1fr; // 通常會auto generate with content grows
+
+    grid-template-areas: ". title title ." ". header header ." ". sidebar content ." ". footer footer .";
+    // header . >> 右邊留空
+
+    > .gtitle {
+      // grid-column-start: 1;
+      // grid-column-end: 3;
+      // grid-column: 1 / 3; // 上面的縮寫
+      // grid-column: span 1; // 同等寫法，延伸兩格 1 ~ 1+1 格線
+      // grid-row: span 2; // row 向下延伸兩格
+
+      grid-area: title;
+    }
+
+    > .gheader {
+      grid-area: header;
+    }
+
+    > .gsidebar {
+      grid-area: sidebar;
+    }
+
+    > .gcontent {
+      grid-area: content;
+      // justify-self: start; // 把自己推到grid的左邊
+    }
+
+    > .gfooter {
+      grid-area: footer;
+    }
+
+    > div:nth-child(even) {
+      background-color: cornflowerblue;
+    }
+
+    > div:nth-child(odd) {
+      background-color: blanchedalmond;
+    }
+  }
+}

@@ -1,0 +1,52 @@
+.banner {
+  width: 100%;
+  height: calc(100vh - 100px);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: table;
+
+  // horizatal
+  @media screen and (orientation: portrait) {
+    background-image: url("../../assets/images/banner.jpeg");
+  }
+
+  // vertical
+  @media screen and (orientation: landscape) {
+    background-image: url("../../assets/images/banner_hor.jpeg");
+  }
+
+  @media screen and (min-width: 1000px) {
+    height: 500px;
+  }
+
+  &-text {
+    display: table-cell;
+    vertical-align: middle;
+
+    > h1 {
+      font-size: 28px;
+      color: #fff;
+      text-align: center;
+      font-style: italic;
+      line-height: 40px;
+      font-weight: 100;
+      text-shadow: 2px 2px 8px #111; // 第三個是blur
+
+      @media screen and (min-width: 1000px) {
+        display: block;
+        width: 550px;
+        margin: 0 auto;
+      }
+    }
+
+    > h2 {
+      font-size: 60px;
+      color: #fff;
+      text-align: center;
+      line-height: 70px;
+      font-weight: 900;
+      text-shadow: 2px 2px 8px #111; // 第三個是blur
+    }
+  }
+}

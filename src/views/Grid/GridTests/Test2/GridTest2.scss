@@ -1,0 +1,22 @@
+.basic-grid {
+  display: grid;
+  gap: 1rem; // hor & ver 的 gap
+
+  // 這些code太髒了
+  // grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  // 1fr one part of available space, 1 column 就是 100%
+  // 1fr 1fr 就是兩個column, 1fr 變成50%
+  // 1fr 1fr 1fr 就是 100% / 3 and so on
+
+  // 乾淨的做法
+  // grid-template-columns: repeat(12, 1fr); // 1fr 12次
+
+  // 更好的sizing，但是會overflow，超出螢幕
+  // grid-template-columns: repeat(12, minmax(240px, 1fr)); // grid item就是最小240px 最大1fr;
+
+  // 好的sizing 且不會overflow >> implicit grid 讓演算法算出需要幾個columns / rows
+  // grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+
+  // auto fill 會在有多餘空間時，建立新的column
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}

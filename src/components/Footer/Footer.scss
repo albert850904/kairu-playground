@@ -1,0 +1,59 @@
+.footer {
+  width: calc(100% - 80px);
+  padding: 40px 40px;
+  background-color: #111;
+  margin-top: 20px;
+  overflow: hidden;
+
+  > ul {
+    width: fit-content;
+    padding-left: 20px;
+    float: left;
+
+    @media screen and (min-width: 1000px) {
+      padding-right: 30px;
+    }
+
+    > li {
+      display: block;
+      list-style: none;
+
+      > a {
+        font-size: 24px;
+        color: white;
+        line-height: 40px;
+      }
+
+      > p {
+        margin: 0;
+
+        @media screen and (min-width: 1000px) {
+          font-size: 24px;
+          color: white;
+          line-height: 40px;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+
+  &-cases {
+    display: none;
+
+    @media screen and (min-width: 1000px) {
+      display: block;
+    }
+  }
+
+  // 如果裡面content很多float, parent div 會有無法辨識內容高度的問題
+  // 在parent 設定overflow hidde可以解決
+  &-links {
+    width: 50px;
+    float: right;
+
+    > img {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+}

@@ -1,0 +1,243 @@
+.video {
+  padding: 2rem 0;
+
+  &-container {
+    position: relative;
+    width: 90%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: center;
+    margin-inline: auto; // video container is center inside body
+
+    background-color: black; // 進入劇院模式，背景要是黑色的
+
+    > video {
+      width: 100%;
+    }
+
+    // play pause button, for demonstrating using css not selector
+    &.paused .pause-icon {
+      display: none;
+    }
+
+    &:not(.paused) .play-icon {
+      display: none;
+    }
+
+    &.full-screen,
+    &.theater {
+      max-width: initial;
+      width: 100%;
+    }
+
+    // theater mode
+    &.theater {
+      max-height: 90vh; // 劇院模式不會吃到全版面
+    }
+
+    // full screen
+    &.full-screen {
+      max-height: 100vh;
+    }
+
+    > .thumbnail-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+    }
+
+    &__controls {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      color: white;
+      z-index: 100;
+      opacity: 0;
+      transition: opacity 150ms ease-in-out;
+
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent);
+        width: 100%;
+        aspect-ratio: 6 / 1; // 依照 6 : 1的尺寸調整大小
+        z-index: -1;
+        pointer-events: none; // 讓容器可以點到下面的
+      }
+
+      &__timeline {
+        height: 7px;
+        margin-inline: 0.5rem;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        > .timeline {
+          position: relative;
+          background-color: rgba(100, 100, 100, 0.5);
+          height: 3px;
+          width: 100%;
+
+          > .thumb-indicator {
+            --scale: 0;
+            position: absolute;
+            height: 200%; // twice as big
+            top: -50%;
+            transform: translateX(-50%) scale(var(--scale));
+            left: calc(var(--progress-position) * 100%);
+            background-color: red;
+            border-radius: 50%;
+            transition: transform 0.25s ease-in-out;
+            aspect-ratio: 1 / 1;
+          }
+
+          > .preview-img {
+            position: absolute;
+            height: 80px;
+            aspect-ratio: 16 / 9;
+            top: -6rem;
+            transform: translateX(-50%); // center and above
+            left: calc(var(--preview-position) * 100%);
+            border-radius: 0.25rem;
+            border: 2px solid white;
+            display: none;
+          }
+
+          // gray
+          &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: calc(100% - var(--preview-position) * 100%);
+            background-color: rgb(150, 150, 150);
+            display: none;
+          }
+
+          // red
+          &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: calc(100% - var(--progress-position) * 100%);
+            background-color: red;
+          }
+
+          &:hover .thumb-indicator {
+            --scale: 1;
+          }
+        }
+
+        &.scrubbing,
+        &:hover {
+          .timeline {
+            height: 100%;
+
+            > .preview-img {
+              display: block;
+            }
+
+            &::before {
+              display: block;
+            }
+          }
+        }
+      }
+
+      .controls {
+        display: flex;
+        gap: 0.5rem;
+        padding: 0.25rem;
+
+        button {
+          cursor: pointer;
+          background: none;
+          border: none;
+          color: inherit;
+          padding: 0;
+          height: 30px;
+          width: 30px;
+          font-size: 1.1rem;
+          opacity: 0.85;
+          transition: opacity 150ms ease-in-out;
+
+          &:hover {
+            opacity: 1;
+          }
+
+          &.wide {
+            width: 50px;
+          }
+        }
+
+        &__volume {
+          display: flex;
+          align-items: center;
+
+          &__mute {
+            .volume-high-icon,
+            .volume-low-icon,
+            .volume-muted-icon {
+              display: none;
+            }
+          }
+
+          &__slider {
+            width: 0;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: all 150ms ease-in-out;
+          }
+
+          &:hover .controls__volume__slider,
+          &:focus-within .controls__volume__slider {
+            width: 100px;
+            transform: scaleX(1);
+          }
+        }
+
+        &__duration {
+          display: flex;
+          align-items: center;
+          gap: 0.25rem;
+          flex-grow: 1; // 把此div以後的item都推到最後面
+        }
+
+        &__caption {
+          border-bottom: 3px solid red !important;
+        }
+      }
+    }
+
+    // volume related icon, for demonstrating parent attribute selector
+    &[data-volume-level="high"] .volume-high-icon {
+      display: block;
+    }
+    &[data-volume-level="low"] .volume-low-icon {
+      display: block;
+    }
+    &[data-volume-level="muted"] .volume-muted-icon {
+      display: block;
+    }
+
+    &.scrubbing .thumbnail-img {
+      display: block;
+    }
+
+    &:hover &__controls,
+    &:focus-within &__controls, // tab的時候
+    &.paused &__controls {
+      opacity: 1;
+    }
+  }
+}
