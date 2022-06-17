@@ -1,3 +1,4 @@
+<<<<<<< HEAD:frontend/src/App.js
 import { Route, Routes } from "react-router-dom";
 
 // views
@@ -24,6 +25,28 @@ function App() {
         <Route path="weather" element={<Weather />} />
       </Routes>
       <Footer />
+=======
+import logo from './logo.svg';
+import './App.css';
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+>>>>>>> parent of cba5e2ef (5/18: youtube player clone):src/App.js
     </div>
   );
 }
