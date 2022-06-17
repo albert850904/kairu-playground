@@ -5,7 +5,6 @@ import Home from "./views/Home/Home";
 
 // components
 import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
 import Grid from "./views/Grid/Grid";
 import Videos from "./views/Videos/Videos";
 
@@ -23,7 +22,6 @@ function App() {
         <Route path="videos" element={<Videos />} />
         <Route path="weather" element={<Weather />} />
       </Routes>
-      <Footer />
     </div>
   );
 }
