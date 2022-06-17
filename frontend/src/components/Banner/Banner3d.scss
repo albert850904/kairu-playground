@@ -1,0 +1,47 @@
+.banner-3d {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  transform-style: preserve-3d; // preserving 3d effects
+  z-index: -1;
+
+  > h1 {
+    font-size: 5rem;
+    color: #fff;
+    text-align: center;
+    font-style: italic;
+    font-weight: 200;
+    text-shadow: 2px 2px 8px #111; // 第三個是blur
+  }
+
+  .background {
+    transform: translateZ(-100px) scale(2); // 調整遠近，translateZ距離 / perspective
+    object-fit: cover; // 正確aspect ratio
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+  }
+
+  .foreground {
+    transform: translateZ(-50px) scale(1.5);
+    object-fit: contain;
+    position: absolute;
+    width: 20%;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+
+  .foreground2 {
+    transform: translateZ(-75px) scale(1.75);
+    object-fit: contain;
+    position: absolute;
+    width: 20%;
+    right: 0;
+    bottom: -1rem;
+    z-index: -1;
+  }
+}

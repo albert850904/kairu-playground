@@ -4,21 +4,14 @@ import PropTypes from "prop-types";
 import "./Home.scss";
 import Banner from "../../components/Banner/Banner";
 import Footer from "../../components/Footer/Footer";
-// image
-import interlaken from "../../assets/images/interlaken.jpeg";
-import moose from "../../assets/images/moose.png";
-import moose2 from "../../assets/images/moose2.png";
+
+import Banner3d from "../../components/Banner/Banner3d";
 
 function Home(props) {
   return (
     <main className="index">
-      <section className="index-banner">
-        {/* <Banner /> */}
-        <img src={interlaken} alt="" className="background" />
-        <img src={moose} alt="" className="foreground" />
-        <img src={moose2} alt="" className="foreground2" />
-        <h1>Welcome</h1>
-      </section>
+      {/* <Banner /> */}
+      <Banner3d />
       <div className="index-contents">
         <section className="index-contents-boxlink">
           <a href="/">
