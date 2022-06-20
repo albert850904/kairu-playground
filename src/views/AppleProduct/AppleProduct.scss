@@ -1,0 +1,24 @@
+.airpods {
+  height: calc(100vh - 100px);
+  overflow-y: scroll;
+  background-color: #000;
+
+  &-container {
+    height: 400vh;
+    position: relative;
+    z-index: 1;
+  }
+
+  canvas {
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-height: 100%;
+    max-width: 100%;
+    z-index: 0;
+  }
+
+  &__scrolling {
+  }
+}

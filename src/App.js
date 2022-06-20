@@ -11,6 +11,7 @@ import Videos from "./views/Videos/Videos";
 // css
 import "./App.scss";
 import Weather from "./views/Weather/Weather";
+import AppleProduct from "./views/AppleProduct/AppleProduct";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="grid" element={<Grid />} />
         <Route path="videos" element={<Videos />} />
         <Route path="weather" element={<Weather />} />
+        <Route path="airpods" element={<AppleProduct />} />
       </Routes>
     </div>
   );

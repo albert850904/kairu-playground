@@ -27,6 +27,9 @@ function Header(props) {
           <li>
             <Link to="weather">Weather</Link>
           </li>
+          <li>
+            <Link to="airpods">Apple</Link>
+          </li>
         </ul>
         <a href="/" className="header-cases">
           Cases
